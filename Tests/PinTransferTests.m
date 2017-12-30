@@ -27,8 +27,8 @@
 #import <OHHTTPStubs/OHHTTPStubs.h>
 #import <OHHTTPStubs/OHPathHelpers.h>
 
-#import <PinPayments/PinPayments.h>
-#import <PinPayments/NSDateFormatter+iso8601.h>
+#import <Trexle/Trexle.h>
+#import <Trexle/NSDateFormatter+iso8601.h>
 
 @interface PinTransferTests : XCTestCase
 @end
@@ -42,7 +42,7 @@
         configuration.applicationId = @"your_application_id";
         configuration.publishableKey = @"pk_your_publishable_key";
         configuration.secretKey = @"your_secret_key";
-        configuration.server = @"https://api.pinpayments.io/1";
+        configuration.server = @"https://core.trexle.com/api/v1";
     }]];
 
     [OHHTTPStubs onStubActivation:^(NSURLRequest * _Nonnull request, id<OHHTTPStubsDescriptor> _Nonnull stub, OHHTTPStubsResponse * _Nonnull responseStub) {
@@ -50,7 +50,7 @@
     }];
 
     __weak id<OHHTTPStubsDescriptor> descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/1/transfers"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/api/v1/transfers"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"transfers-post.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -59,7 +59,7 @@
     descriptor.name = @"POST transfers";
 
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/transfers"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/transfers"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"transfers-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture

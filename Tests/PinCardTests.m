@@ -27,7 +27,7 @@
 #import <OHHTTPStubs/OHHTTPStubs.h>
 #import <OHHTTPStubs/OHPathHelpers.h>
 
-#import <PinPayments/PinPayments.h>
+#import <Trexle/Trexle.h>
 
 @interface PinCardTests : XCTestCase
 @end
@@ -40,7 +40,7 @@
         configuration.applicationId = @"your_application_id";
         configuration.publishableKey = @"pk_your_publishable_key";
         configuration.secretKey = @"your_secret_key";
-        configuration.server = @"https://api.pinpayments.io/1";
+        configuration.server = @"https://core.trexle.com/api/v1";
     }]];
     
     [OHHTTPStubs onStubActivation:^(NSURLRequest * _Nonnull request, id<OHHTTPStubsDescriptor> _Nonnull stub, OHHTTPStubsResponse * _Nonnull responseStub) {
@@ -48,7 +48,7 @@
     }];
     
     __weak id<OHHTTPStubsDescriptor> descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/1/cards"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/api/v1/cards"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"cards-post.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture

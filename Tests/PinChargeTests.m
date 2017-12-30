@@ -27,8 +27,8 @@
 #import <OHHTTPStubs/OHHTTPStubs.h>
 #import <OHHTTPStubs/OHPathHelpers.h>
 
-#import <PinPayments/PinPayments.h>
-#import <PinPayments/NSDateFormatter+iso8601.h>
+#import <Trexle/Trexle.h>
+#import <Trexle/NSDateFormatter+iso8601.h>
 
 @interface PinChargeTests : XCTestCase
 @end
@@ -42,7 +42,7 @@
         configuration.applicationId = @"your_application_id";
         configuration.publishableKey = @"pk_your_publishable_key";
         configuration.secretKey = @"your_secret_key";
-        configuration.server = @"https://api.pinpayments.io/1";
+        configuration.server = @"https://core.trexle.com/api/v1";
     }]];
     
     [OHHTTPStubs onStubActivation:^(NSURLRequest * _Nonnull request, id<OHHTTPStubsDescriptor> _Nonnull stub, OHHTTPStubsResponse * _Nonnull responseStub) {
@@ -50,7 +50,7 @@
     }];
 
    __weak id<OHHTTPStubsDescriptor> descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/1/charges"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/api/v1/charges"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"charges-post.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -59,7 +59,7 @@
     descriptor.name = @"POST charges";
 
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/charges"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/charges"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"charges-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -68,7 +68,7 @@
     descriptor.name = @"GET charges";
 
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/charges/ch_lfUYEBK14zotCTykezJkfg"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/charges/ch_lfUYEBK14zotCTykezJkfg"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"charges-token-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -77,7 +77,7 @@
     descriptor.name = @"GET charges/token";
 
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/charges/search"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/charges/search"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"charges-search-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -92,7 +92,7 @@
 }
 
 - (void)testCharge:(PinCharge*)charge {
-    XCTAssertEqualObjects(charge.email, @"roland@pinpayments.com");
+    XCTAssertEqualObjects(charge.email, @"john@trexle.com");
     XCTAssertEqualObjects(charge.chargeDescription, @"test charge");
     XCTAssertEqual(charge.amount, 400);
     XCTAssertEqualObjects(charge.ipAddress, @"203.192.1.172");

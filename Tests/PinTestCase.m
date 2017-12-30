@@ -1,9 +1,9 @@
 //
 //  PinTestCase.m
-//  PinPaymentsTests
+//  TrexleTests
 //
 //  Created by Chris Kruger on 20/12/17.
-//  Copyright © 2017 Pin Payments. All rights reserved.
+//  Copyright © 2017 Trexle. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

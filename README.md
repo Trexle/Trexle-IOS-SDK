@@ -1,7 +1,5 @@
-# PinPayments SDK for iOS
+# Trexle SDK for iOS
 
-[![Build Status](https://travis-ci.org/KrugerHeavyIndustries/pinpayments-ios-sdk.svg?branch=feature%2Ftravis)](https://travis-ci.org/KrugerHeavyIndustries/pinpayments-ios-sdk)
+A library that gives you access to the Trexle platform from your iOS app.
 
-A library that gives you access to the Pin Payments platform from your iOS app.
-
-For more information about Pin Payments and its features, see the [website](https://www.pinpayments.com).
+For more information about Trexle and its features, see the [website](https://trexle.com).

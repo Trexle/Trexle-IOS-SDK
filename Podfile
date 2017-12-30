@@ -2,17 +2,17 @@
 platform :ios, '9.0'
 use_frameworks!
 
-workspace 'PinPayments.xcworkspace'
+workspace 'Trexle.xcworkspace'
 
-target 'PinPaymentsStartProject' do
-  project 'StarterProject/PinPaymentsStartProject.xcodeproj'
+target 'TrexleStartProject' do
+  project 'StarterProject/TrexleStartProject.xcodeproj'
 end
 
-target 'PinPayments' do
-  project 'PinPayments.xcodeproj'
+target 'Trexle' do
+  project 'Trexle.xcodeproj'
   pod 'AFNetworking', '~> 3.0'
 
-  target 'PinPaymentsTests' do
+  target 'TrexleTests' do
     inherit! :search_paths
     pod 'OHHTTPStubs'
   end

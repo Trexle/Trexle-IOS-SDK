@@ -27,7 +27,7 @@
 #import <OHHTTPStubs/OHHTTPStubs.h>
 #import <OHHTTPStubs/OHPathHelpers.h>
 
-#import <PinPayments/PinPayments.h>
+#import <Trexle/Trexle.h>
 
 @interface PinCustomerTests : XCTestCase
 
@@ -42,7 +42,7 @@
         configuration.applicationId = @"your_application_id";
         configuration.publishableKey = @"pk_your_publishable_key";
         configuration.secretKey = @"your_secret_key";
-        configuration.server = @"https://api.pinpayments.io/1";
+        configuration.server = @"https://core.trexle.com/api/v1";
     }]];
     
     [OHHTTPStubs onStubActivation:^(NSURLRequest * _Nonnull request, id<OHHTTPStubsDescriptor> _Nonnull stub, OHHTTPStubsResponse * _Nonnull responseStub) {
@@ -50,7 +50,7 @@
     }];
     
     __weak id<OHHTTPStubsDescriptor> descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/1/customers"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/api/v1/customers"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"customers-post.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -59,7 +59,7 @@
     descriptor.name = @"POST customers";
     
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/customers"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/customers"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"customers-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -68,7 +68,7 @@
     descriptor.name = @"GET customers";
     
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"customers-token-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -77,7 +77,7 @@
     descriptor.name = @"GET customers/token";
     
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"PUT"] && [request.URL.path isEqualToString:@"/1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"PUT"] && [request.URL.path isEqualToString:@"/api/v1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"customers-token-put.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -86,14 +86,14 @@
     descriptor.name = @"PUT customers/token";
     
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"DELETE"] && [request.URL.path isEqualToString:@"/1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"DELETE"] && [request.URL.path isEqualToString:@"/api/v1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         return [OHHTTPStubsResponse responseWithData:[NSData data] statusCode:204 headers:nil];
     }];
     descriptor.name = @"DELETE customers/token";
     
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ/charges"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ/charges"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"customer-charges-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -102,7 +102,7 @@
     descriptor.name = @"GET customers/token/charges";
     
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ/cards"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/customers/cus_XZg1ULpWaROQCOT5PdwLkQ/cards"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"customer-cards-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -120,7 +120,7 @@
     PinCustomer *customer = [[PinCustomer alloc] init];
     [PinCustomer createCustomerInBackground:customer block:^(PinCustomer * _Nullable customer, NSError * _Nullable error) {
         XCTAssertEqualObjects(customer.token, @"cus_XZg1ULpWaROQCOT5PdwLkQ");
-        XCTAssertEqualObjects(customer.email, @"roland@pinpayments.com");
+        XCTAssertEqualObjects(customer.email, @"john@trexle.com");
         XCTAssertEqualObjects(customer.createdAt, @"2012-06-22T06:27:33Z");
         XCTAssertEqualObjects(customer.card.token, @"card_nytGw7koRg23EEp9NTmz9w");
         XCTAssertEqualObjects(customer.card.scheme, @"master");
@@ -156,7 +156,7 @@
 - (void)testFetchCustomerDetailsInBackground {
     XCTestExpectation *expectation = [self expectationWithDescription:@"fetchCustomerDetailsInBackground"];
     [PinCustomer fetchCustomerDetailsInBackground:@"cus_XZg1ULpWaROQCOT5PdwLkQ" block:^(PinCustomer * _Nullable customer, NSError * _Nullable error) {
-        XCTAssertEqualObjects(customer.email, @"roland@pinpayments.com");
+        XCTAssertEqualObjects(customer.email, @"john@trexle.com");
         [expectation fulfill];
     }];
     
@@ -167,7 +167,7 @@
 - (void)testUpdateCustomerDetailsInBackground {
     XCTestExpectation *expectation = [self expectationWithDescription:@"updateCustomersDetailsInBackground"];
     [PinCustomer updateCustomerDetailsInBackground:@"cus_XZg1ULpWaROQCOT5PdwLkQ" block:^(PinCustomer * _Nullable customer, NSError * _Nullable error) {
-        XCTAssertEqualObjects(customer.email, @"roland@pinpayments.com");
+        XCTAssertEqualObjects(customer.email, @"john@trexle.com");
         
         [expectation fulfill];
     }];

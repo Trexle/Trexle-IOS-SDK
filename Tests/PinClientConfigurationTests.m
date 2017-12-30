@@ -25,7 +25,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "PinPayments.h"
+#import "Trexle.h"
 
 @interface PinClientConfigurationTests : XCTestCase
 

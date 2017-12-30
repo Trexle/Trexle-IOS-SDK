@@ -27,8 +27,8 @@
 #import <OHHTTPStubs/OHHTTPStubs.h>
 #import <OHHTTPStubs/OHPathHelpers.h>
 
-#import <PinPayments/PinPayments.h>
-#import <PinPayments/NSDateFormatter+iso8601.h>
+#import <Trexle/Trexle.h>
+#import <Trexle/NSDateFormatter+iso8601.h>
 
 @interface PinRecipientTests : XCTestCase
 @end
@@ -42,7 +42,7 @@
         configuration.applicationId = @"your_application_id";
         configuration.publishableKey = @"pk_your_publishable_key";
         configuration.secretKey = @"your_secret_key";
-        configuration.server = @"https://api.pinpayments.io/1";
+        configuration.server = @"https://core.trexle.com/api/v1";
     }]];
     
     [OHHTTPStubs onStubActivation:^(NSURLRequest * _Nonnull request, id<OHHTTPStubsDescriptor> _Nonnull stub, OHHTTPStubsResponse * _Nonnull responseStub) {
@@ -50,7 +50,7 @@
     }];
     
     __weak id<OHHTTPStubsDescriptor> descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/1/recipients"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"POST"] && [request.URL.path isEqualToString:@"/api/v1/recipients"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"recipients-post.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -59,7 +59,7 @@
     descriptor.name = @"POST recipients";
     
     descriptor = [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-        return [request.URL.host isEqualToString:@"api.pinpayments.io"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/1/recipients"];
+        return [request.URL.host isEqualToString:@"core.trexle.com"] && [request.HTTPMethod isEqualToString:@"GET"] && [request.URL.path isEqualToString:@"/api/v1/recipients"];
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
         NSString* fixture = OHPathForFile(@"recipients-get.json", self.class);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
@@ -78,7 +78,7 @@
     [PinRecipient createRecipientInBackground:transfer block:^(PinRecipient * _Nullable recipient, NSError * _Nullable error) {
         XCTAssertEqualObjects(recipient.token, @"rp_a98a4fafROQCOT5PdwLkQ");
         XCTAssertEqualObjects(recipient.name, @"Mr Roland Robot");
-        XCTAssertEqualObjects(recipient.email, @"roland@pinpayments.com");
+        XCTAssertEqualObjects(recipient.email, @"john@trexle.com");
         XCTAssertEqualObjects(recipient.createdAt, [[[NSDateFormatter alloc] init] dateFromISO8601:@"2012-06-22T06:27:33Z"]);
         XCTAssertEqualObjects(recipient.bankAccount.token, @"ba_nytGw7koRg23EEp9NTmz9w");
         XCTAssertEqualObjects(recipient.bankAccount.name, @"Mr Roland Robot");
