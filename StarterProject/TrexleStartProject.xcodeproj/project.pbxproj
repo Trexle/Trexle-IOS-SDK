@@ -139,10 +139,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Trexle";
+				ORGANIZATIONNAME = Trexle;
 				TargetAttributes = {
 					B18486281F46CBAB004185B1 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = AC464WLMPM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -362,6 +363,7 @@
 			baseConfigurationReference = 177D44E10EC2CB73279F83FB /* Pods-TrexleStartProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AC464WLMPM;
 				INFOPLIST_FILE = TrexleStartProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trexle.TrexleStartProject;
@@ -374,6 +376,7 @@
 			baseConfigurationReference = 2B1ECF1A26E2292DE6FBAEED /* Pods-TrexleStartProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AC464WLMPM;
 				INFOPLIST_FILE = TrexleStartProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trexle.TrexleStartProject;

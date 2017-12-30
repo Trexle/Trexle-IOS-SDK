@@ -26,7 +26,7 @@
 #import <Trexle/PinClientConfiguration.h>
 
 NSString *const _PinDefaultServerURLString = @"https://core.trexle.com/api/v1";
-NSString *const _PinDefaultTestServerURLString = @"https://test-api.pin.net.au/1";
+NSString *const _PinDefaultTestServerURLString = @"https://core.trexle.com/api/v1";
 
 @implementation PinClientConfiguration
 

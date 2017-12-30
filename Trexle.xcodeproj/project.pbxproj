@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1858664C97DF88E241AC0696 /* Pods_TrexleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E1442E9B99CA0103DD6FDB3 /* Pods_TrexleTests.framework */; };
+		467025AF1FF84CAE0022F052 /* AFNetworking in CopyFiles */ = {isa = PBXBuildFile; fileRef = 467025AE1FF84CAE0022F052 /* AFNetworking */; };
 		696CAD52ADAFA1A590C0EF19 /* Pods_Trexle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26525827068B8C243E1A4404 /* Pods_Trexle.framework */; };
 		B10E13DD1F4A8B630066F85B /* PinCharge.h in Headers */ = {isa = PBXBuildFile; fileRef = B15B96311F262A6F00A51302 /* PinCharge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B10E13E81F4AB7E10066F85B /* NSObject+Json.h in Headers */ = {isa = PBXBuildFile; fileRef = B10E13E61F4AB7E10066F85B /* NSObject+Json.h */; };
@@ -73,9 +74,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		467025AD1FF84BCD0022F052 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				467025AF1FF84CAE0022F052 /* AFNetworking in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		08C296614C6AE8CA5494E329 /* Pods-TrexleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrexleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrexleTests/Pods-TrexleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		26525827068B8C243E1A4404 /* Pods_Trexle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trexle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		467025AE1FF84CAE0022F052 /* AFNetworking */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AFNetworking; path = Pods/AFNetworking/AFNetworking; sourceTree = "<group>"; };
 		4ABAAA9F61ABBC4A21D2F107 /* Pods-Trexle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trexle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trexle/Pods-Trexle.debug.xcconfig"; sourceTree = "<group>"; };
 		5E1442E9B99CA0103DD6FDB3 /* Pods_TrexleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrexleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66DCE6324B35B77119212B0A /* Pods-TrexleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrexleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrexleTests/Pods-TrexleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -237,6 +252,7 @@
 		B193D6C11F0290D70066B172 = {
 			isa = PBXGroup;
 			children = (
+				467025AE1FF84CAE0022F052 /* AFNetworking */,
 				B16554D81F150F6B00642E09 /* Trexle */,
 				B16554E81F15191700642E09 /* Test */,
 				B193D6CC1F0290D70066B172 /* Products */,
@@ -323,6 +339,7 @@
 				B193D6C81F0290D70066B172 /* Headers */,
 				B193D6C91F0290D70066B172 /* Resources */,
 				E93288851C1455E25E591767 /* [CP] Copy Pods Resources */,
+				467025AD1FF84BCD0022F052 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -361,10 +378,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Trexle";
+				ORGANIZATIONNAME = Trexle;
 				TargetAttributes = {
 					B193D6CA1F0290D70066B172 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = AC464WLMPM;
 						ProvisioningStyle = Automatic;
 					};
 					B193D6D31F0290D70066B172 = {
@@ -665,7 +683,9 @@
 			baseConfigurationReference = 4ABAAA9F61ABBC4A21D2F107 /* Pods-Trexle.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AC464WLMPM;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -685,6 +705,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AC464WLMPM;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
