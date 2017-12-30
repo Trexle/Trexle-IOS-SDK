@@ -1,0 +1,6 @@
+framework module Trexle {
+  umbrella header "Trexle.h"
+
+  export *
+  module * { export * }
+}
